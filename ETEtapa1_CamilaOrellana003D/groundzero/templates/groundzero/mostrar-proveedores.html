@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load static%}
+<html>
+    <head>
+      <title>Ground Zero</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'groundzero/css/datos.css'%}">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href="{% static 'groundzero/bootstrap/css/bootstrap.min.css'%}" type="text/css" rel="stylesheet"> 
+
+    </head>     
+    <body>
+      <!--HEADER-->
+      <h1 class="site-heading text-center text-white d-none d-lg-block">
+        <span class="site-heading-lower">Ficha Proveedores</span>
+      </h1>
+      <!-- Barra Navegación -->
+      <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'home' %}">Ground Zero</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mx-auto">
+              <!--CONEXIÓN A LAS PÁGINAS CAMBIAR EL "ACTIVE" PARA INDICAR LA PÁGINA QUE ESTÁ USANDO-->
+              <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="{% url 'crearProveedorNuevo' %}">Agregar Proveedor</a>
+              </li>
+              <li class="nav-item active px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="{% url 'ver' %}">Mostrar Proveedores</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <br><br><br>
+
+      <!--CONTENIDO PÁGINA-->
+      <div class="container">
+      <div class="container">
+        <div class="container bg-table">
+        <h1>Mostrando Proveedores</h1>
+            <br><br>
+      
+            <table class="table table-bordered table-responsive">
+              <thead>
+                  <tr>
+                      <th scope="col">Nro. Identificación</th>
+                      <th scope="col">Imagen</th>
+                      <th scope="col">Nombre Completo</th>
+                      <th scope="col">Teléfono</th>
+                      <th scope="col">Dirección</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Contraseña</th>
+                      <th scope="col">País</th>
+                      <th scope="col">Moneda de Pago</th>     
+                  </tr>
+              </thead>
+              <tbody>
+                  {%for prov in proveedores%}
+                      <tr>
+                          <td>{{prov.nroIdentificacion}}</td>
+                          <td>
+                              <img src="{{ prov.fotoLogo.url }}" width="200" height="200">
+                          </td>
+                          <td>{{prov.nombre}}</td>
+                          <td>{{prov.fono}}</td>
+                          <td>{{prov.direccion}}</td>
+                          <td>{{prov.email}}</td>
+                          <td>{{prov.contraseña}}</td>
+                          <td>{{prov.pais}}</td>
+                          <td>{{prov.monedaPago}}</td>
+                          <td><a href="{% url 'modificar_proveedor' prov.nroIdentificacion%}" class="btn btn-primary">Modificar   </a></td><td><a href="{% url 'eliminar_proveedor' prov.nroIdentificacion%}" class="btn btn-danger">Eliminar </a></td>                          
+                      </tr>
+                  {%endfor%}
+  
+              </tbody>
+  
+          </table>
+        <br>
+    </div>
+    </div>
+    </div>
+</div></div>
+    <br><br>
+      <!-- Bootstrap core JavaScript -->   
+      <script src="{% static 'groundzero/jquery/jquery.slim.min.js'%}"></script>           
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="{% static 'groundzero/bootstrap/js/bootstrap.min.js'%}"></script>
+      <script src="{% static 'groundzero/jquery/jquery.min.js'%}"></script>
+    </body>
+    <footer class="footer text-faded text-center py-5">
+        <div class="container">
+          <p class="m-0 small">Copyright &copy; Ground Zero - 2021 </p>
+          <br>
+        </div>    
+      </footer>
+
+</html>

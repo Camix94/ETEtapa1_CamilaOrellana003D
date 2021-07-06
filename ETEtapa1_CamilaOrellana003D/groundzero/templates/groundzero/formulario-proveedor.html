@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% load static%}
+<html>
+    <head>
+      <title>Ground Zero</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link rel="stylesheet" type="text/css" href="{% static 'groundzero/css/agregar.css'%}">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href="{% static 'groundzero/bootstrap/css/bootstrap.min.css'%}" type="text/css" rel="stylesheet">  
+      
+    </head>     
+     
+  <body>
+    <!--HEADER-->
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <span class="site-heading-lower">Ficha Proveedores</span>
+    </h1>
+    <!-- Barra Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'home' %}">Ground Zero</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <!--CONEXIÓN A LAS PÁGINAS CAMBIAR EL "ACTIVE" PARA INDICAR LA PÁGINA QUE ESTÁ USANDO-->
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'crearProveedorNuevo' %}">Agregar Proveedor</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'ver' %}">Mostrar Proveedores</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br><br><br>
+
+      
+      <!--CONTENIDO PÁGINA-->
+      <div class="container">
+        <div class="container-form">
+            <div class="title">Ficha Proveedores</div>
+              <br><br>
+                <form method="POST" action="#" id="form_1" enctype="multipart/form-data"> 
+                  
+                  {%csrf_token%}
+                  <div class="user-details">
+                    <div class="input-box">
+                      {{form_1.nroIdentificacion.label}}
+                      {{form_1.nroIdentificacion}}
+                  </div>
+                    <div class="input-box">
+                        {{form_1.fotoLogo.label}}
+                        {{form_1.fotoLogo}}
+                    </div>
+                    <div class="input-box">
+                        {{form_1.nombre.label}}
+                        {{form_1.nombre}}
+                    </div>
+                    <div class="input-box">
+                        {{form_1.fono.label}}
+                        {{form_1.fono}}
+                    </div>
+                    <div class="input-box">
+                        {{form_1.direccion.label}}
+                        {{form_1.direccion}}
+                    </div>
+                    <div class="input-box">
+                        {{form_1.email.label}}
+                        {{form_1.email}}
+                    </div>
+                    <div class="input-box">
+                      {{form_1.pais.label}}
+                      {{form_1.pais}}
+                  </div>
+                  <div class="input-box">
+                    {{form_1.contraseña.label}}
+                    {{form_1.contraseña}}
+                </div>
+                <div class="input-box">
+                  {{form_1.monedaPago.label}}
+                  {{form_1.monedaPago}}
+              </div>
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+                <div id="msg" class="mensaje"></div>
+              </div>
+              <script src="{% static 'groundzero/js/validation.js'%}"></script>
+            </div>
+          </div>
+            </div>
+        </div>
+        <br><br><br>
+
+
+
+
+      <!-- Bootstrap core JavaScript -->   
+      <script src="{% static 'groundzero/jquery/jquery.slim.min.js'%}"></script>           
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="{% static 'groundzero/bootstrap/js/bootstrap.min.js'%}"></script>
+      <script src="{% static 'groundzero/jquery/jquery.min.js'%}"></script>
+    </body>
+    <footer class="footer text-faded text-center py-5">
+        <div class="container">
+          <p class="m-0 small">Copyright &copy; Ground Zero - 2021 </p>
+          <br>
+        </div>    
+      </footer>
+
+</html>
