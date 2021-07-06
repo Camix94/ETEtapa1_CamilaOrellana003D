@@ -10,7 +10,7 @@ class MonedaPago(models.Model):
 
 class ProveedorNuevo(models.Model):
     nroIdentificacion = models.IntegerField(primary_key=True, verbose_name="Número Identificación")
-    fotoLogo = models.ImageField(upload_to='images/', null=False, blank=True)
+    fotoLogo = models.ImageField(upload_to='images/', null=True, blank=True)
     nombre = models.CharField(max_length=500, verbose_name='Nombre Completo')
     fono = models.IntegerField(verbose_name='Teléfono')
     direccion = models.CharField(max_length=200, verbose_name='Dirección')
