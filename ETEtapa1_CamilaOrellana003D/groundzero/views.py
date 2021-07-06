@@ -46,6 +46,16 @@ def form_mod_proveedor(request,id):
         'form': ProveedorForm(instance=proveedor )
     }
     if request.method == 'POST': 
+        #VUELVE A GENERAR CONTRASEÑA TEMPORAL CON LOS NUEVOS DATOS INGRESADOS
+        data=request.POST
+        _mutable = data._mutable
+        data._mutable = True  
+        ide = request.POST['nroIdentificacion']
+        nom = request.POST['nombre']
+        pai = request.POST['pais']
+        fon = request.POST['fono']
+        nueva = str(ide)[:2] + nom[:2].upper() + pai[-2:].lower() + str(fon)[-2:]
+        data['contraseña'] = nueva
         formulario = ProveedorForm(data=request.POST, instance = proveedor)
         if formulario.is_valid: 
             formulario.save()           
@@ -56,4 +66,5 @@ def eliminar_proveedor(request,id):
     proveedor  = ProveedorNuevo.objects.get(nroIdentificacion=id)
     proveedor.delete()
     return redirect('ver')
+
 

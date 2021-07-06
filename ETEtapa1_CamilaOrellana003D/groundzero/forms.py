@@ -12,7 +12,7 @@ class ProveedorForm(forms.ModelForm):
         fields = ['nroIdentificacion','fotoLogo', 'nombre', 'fono', 'direccion', 'email', 'pais', 'contraseña', 'monedaPago']
         labels ={
             'nroIdentificacion' : 'Número Identificación',
-            'fotoLogo' : 'Imagen *obligatorio' ,
+            'fotoLogo' : 'Foto/Logo' ,
             'nombre' : 'Nombre Completo', 
             'fono' : 'Teléfono', 
             'direccion' : 'Dirección',
